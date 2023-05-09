@@ -47,21 +47,20 @@ android {
 }
 
 dependencies {
-    val composeVersion: String by rootProject.extra
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
 
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.0")
-    implementation("androidx.activity:activity-compose:1.6.1")
-    implementation("androidx.compose.ui:ui:1.4.0-rc01")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.4.0-rc01")
-    implementation("androidx.compose.material3:material3:1.1.0-alpha08")
+    implementation(libs.androidx.activity.compose)
+    debugApi(libs.androidx.compose.ui.tooling)
+    debugImplementation(libs.androidx.compose.ui.testManifest)
+    api(libs.androidx.compose.ui.tooling.preview)
+    api(libs.androidx.compose.ui.util)
+    api(libs.androidx.compose.runtime)
+    api(libs.androidx.compose.material3)
 
-    testImplementation ("junit:junit:4.13.2")
-
-    androidTestImplementation ("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation ("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation ("androidx.compose.ui:ui-test-junit4:1.4.0-rc01")
-
-    debugImplementation ("androidx.compose.ui:ui-tooling:1.4.0-rc01")
-    debugImplementation ("androidx.compose.ui:ui-test-manifest:1.4.0-rc01")
+    testImplementation(libs.junit4)
+    androidTestImplementation(libs.androidx.compose.ui.test)
+    androidTestImplementation(libs.androidx.test.espresso.core)
 }
