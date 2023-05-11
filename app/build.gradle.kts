@@ -1,18 +1,17 @@
+import br.com.dfn.app.convention.core.SunsetBuildType
+
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    id("sunsetexperience.android.application")
+    id("sunsetexperience.android.application.compose")
 }
 
 android {
     namespace = "br.com.dfn.app.sunsetexp"
-    compileSdk = 33
 
     defaultConfig {
         applicationId = "br.com.dfn.app.sunsetexp"
-        minSdk = 26
-        targetSdk = 33
         versionCode = 1
-        versionName = "1.0"
+        versionName = "0.0.1" // X.Y.Z; X = Major, Y = minor, Z = Patch level
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -21,24 +20,22 @@ android {
     }
 
     buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        val debug by getting {
+            applicationIdSuffix = SunsetBuildType.DEBUG.applicationIdSuffix
         }
+        val release by getting {
+            isMinifyEnabled = true
+            applicationIdSuffix = SunsetBuildType.RELEASE.applicationIdSuffix
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+
+            // To publish on the Play store a private signing key is required, but to allow anyone
+            // who clones the code to sign and run the release variant, use the debug signing key.
+            // TODO: Abstract the signing configuration to a separate file to avoid hardcoding this.
+            signingConfig = signingConfigs.getByName("debug")
+        }
+
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
-    }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.2"
-    }
+
     packagingOptions {
         resources {
             excludes.add("/META-INF/{AL2.0,LGPL2.1}")

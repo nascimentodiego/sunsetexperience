@@ -14,4 +14,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "build-config"
 include(":convention")
-include(":lib")
