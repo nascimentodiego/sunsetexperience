@@ -1,10 +1,10 @@
 # sunsetexperience
 An intuitive app to manage your temporary housing
 
-## Arquitetura
+## Architecture
 
 ### Modern App Architecture (MVVM + Clean Architecture)
-This Modern App Architecture encourages using the following techniques, among others:
+This project are using the following google techniques recommendations:
 
 > - A reactive and layered architecture.</br>
 > - Unidirectional Data Flow (UDF) in all layers of the app.</br>
@@ -21,7 +21,7 @@ Clean Architecture divided into 3 layers: (Presentation - Domain - Data)
 
 ### Modules
 Above is shown the multiples modules
-> The concept this project is based feature module
+> The concept of this project is based feature module, can you see at diagram below:
 
 <p align="start">
   <img src="art_arch.png" width="1024" title="modules">
