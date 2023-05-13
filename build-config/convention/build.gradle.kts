@@ -21,23 +21,35 @@ gradlePlugin {
             id = "sunsetexperience.android.application.compose"
             implementationClass = "AndroidApplicationComposeConventionPlugin"
         }
+        
+        register("androidApplication") {
+            id = "sunsetexperience.android.application"
+            implementationClass = "AndroidApplicationConventionPlugin"
+        }
+
+        register("androidApplicationJacoco") {
+            id = "sunsetexperience.android.application.jacoco"
+            implementationClass = "AndroidApplicationJacocoConventionPlugin"
+        }
+
+        register("androidFeature") {
+            id = "sunsetexperience.android.feature"
+            implementationClass = "AndroidFeatureConventionPlugin"
+        }
+
+        register("androidLibrary") {
+            id = "sunsetexperience.android.library"
+            implementationClass = "AndroidLibraryConventionPlugin"
+        }
 
         register("androidLibraryCompose") {
             id = "sunsetexperience.android.library.compose"
             implementationClass = "AndroidLibraryComposeConventionPlugin"
         }
 
-        register("androidApplication") {
-            id = "sunsetexperience.android.application"
-            implementationClass = "AndroidApplicationConventionPlugin"
-        }
-        register("androidLibrary") {
-            id = "sunsetexperience.android.library"
-            implementationClass = "AndroidLibraryConventionPlugin"
-        }
-        register("androidFeature") {
-            id = "sunsetexperience.android.feature"
-            implementationClass = "AndroidFeatureConventionPlugin"
+        register("androidLibraryJacoco") {
+            id = "sunsetexperience.android.library.jacoco"
+            implementationClass = "AndroidLibraryJacocoConventionPlugin"
         }
     }
 }
