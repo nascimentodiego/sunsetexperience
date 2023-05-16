@@ -8,16 +8,14 @@ internal fun Project.configureKtLint(
     commonExtension: KtlintExtension,
 ) {
     commonExtension.apply{
-        debug.set(true)
-        verbose.set(true)
         android.set(true)
         ignoreFailures.set(false)
-        outputToConsole.set(true)
-        outputColorName.set("RED")
-        disabledRules.set(setOf("final-newline"))
+        disabledRules.set(setOf("final-newline","import-ordering"))
         reporters {
             reporter(ReporterType.PLAIN)
             reporter(ReporterType.CHECKSTYLE)
+            reporter(ReporterType.HTML)
+            reporter(ReporterType.SARIF)
         }
     }
 }

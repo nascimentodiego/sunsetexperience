@@ -1,8 +1,6 @@
 plugins {
     id("sunsetexperience.android.feature")
     id("sunsetexperience.android.library.compose")
-    id("sunsetexperience.android.library.jacoco")
-    id("sunsetexperience.android.application.ktlint")
 }
 
 android {

@@ -11,6 +11,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
             with(pluginManager) {
                 apply("com.android.application")
                 apply("org.jetbrains.kotlin.android")
+                apply("sunsetexperience.android.application.ktlint")
             }
 
             extensions.configure<ApplicationExtension> {

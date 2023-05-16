@@ -3,7 +3,6 @@ import br.com.dfn.app.convention.core.SunsetBuildType
 plugins {
     id("sunsetexperience.android.application")
     id("sunsetexperience.android.application.compose")
-    id("sunsetexperience.android.application.ktlint")
     id("sunsetexperience.android.application.jacoco")
     id("jacoco")
 }

@@ -15,6 +15,8 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             with(pluginManager) {
                 apply("com.android.library")
                 apply("org.jetbrains.kotlin.android")
+                apply("sunsetexperience.android.library.jacoco")
+                apply("sunsetexperience.android.application.ktlint")
             }
 
             extensions.configure<LibraryExtension> {
