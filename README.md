@@ -33,5 +33,5 @@ Pre push Git Hooks
 > Add file pre-push at directory <b>.git/hooks<b/> to configure ktlint and deteKt checks before push
 
 <p align="start">
-  <img src="pre-push-git-hooks.gif" width="1024" title="pre-push">
+  <img src="git-pre-push-hooks.jpg" width="1024" title="pre-push">
 </p>
