@@ -1,16 +1,17 @@
-import br.com.dfn.app.convention.core.configureKtLint
+
+import br.com.dfn.app.convention.core.configureDetekt
+import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.getByType
-import org.jlleitschuh.gradle.ktlint.KtlintExtension
 
 class AndroidApplicationDeteKtConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            pluginManager.apply("io.gitlab.arturbosch.detektt")
+            pluginManager.apply("io.gitlab.arturbosch.detekt")
 
-            val extension = extensions.getByType<KtlintExtension>()
-            configureKtLint(extension)
+            val extension = extensions.getByType<DetektExtension>()
+            configureDetekt(extension)
         }
     }
 

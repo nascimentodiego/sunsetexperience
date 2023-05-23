@@ -1,9 +1,5 @@
-//import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
-//import org.jlleitschuh.gradle.ktlint.KtlintExtension
-
 plugins {
     `kotlin-dsl`
-  //  id("org.jlleitschuh.gradle.ktlint").version("11.3.2")
 }
 
 group = "br.com.dfn.sunsetexperience.buildconfig"
@@ -13,26 +9,13 @@ java {
     targetCompatibility = JavaVersion.VERSION_11
 }
 
-/*
-configure<KtlintExtension> {
-    debug.set(true)
-    verbose.set(true)
-    android.set(true)
-    ignoreFailures.set(false)
-    outputToConsole.set(true)
-    outputColorName.set("RED")
-    reporters {
-        reporter(ReporterType.PLAIN)
-        reporter(ReporterType.CHECKSTYLE)
-    }
-}
-*/
 
 dependencies {
     compileOnly(libs.android.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
     compileOnly(libs.ksp.gradlePlugin)
     compileOnly(libs.ktlint.gradlePlugin)
+    compileOnly(libs.deteKt.gradlePlugin)
 }
 
 gradlePlugin {
@@ -41,6 +24,11 @@ gradlePlugin {
         register("androidApplicationKtlint") {
             id = "sunsetexperience.android.application.ktlint"
             implementationClass = "AndroidApplicationKtLintConventionPlugin"
+        }
+
+        register("androidApplicationDeteKt") {
+            id = "sunsetexperience.android.application.detekt"
+            implementationClass = "AndroidApplicationDeteKtConventionPlugin"
         }
 
         register("androidApplicationCompose") {

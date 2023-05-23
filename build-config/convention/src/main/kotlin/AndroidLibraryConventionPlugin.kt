@@ -17,6 +17,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 apply("org.jetbrains.kotlin.android")
                 apply("sunsetexperience.android.library.jacoco")
                 apply("sunsetexperience.android.application.ktlint")
+                apply("sunsetexperience.android.application.detekt")
             }
 
             extensions.configure<LibraryExtension> {

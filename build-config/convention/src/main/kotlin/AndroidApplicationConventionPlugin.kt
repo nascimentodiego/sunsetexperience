@@ -12,6 +12,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 apply("com.android.application")
                 apply("org.jetbrains.kotlin.android")
                 apply("sunsetexperience.android.application.ktlint")
+                apply("sunsetexperience.android.application.detekt")
             }
 
             extensions.configure<ApplicationExtension> {
