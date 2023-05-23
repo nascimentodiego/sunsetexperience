@@ -41,3 +41,10 @@ fun DefaultPreview() {
         Greeting("Android")
     }
 }
+
+@Composable
+fun _aloWInfermeira() {
+    SunsetExperienceTheme {
+        Greeting("Android")
+    }
+}
