@@ -1,9 +1,9 @@
-import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
-import org.jlleitschuh.gradle.ktlint.KtlintExtension
+//import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
+//import org.jlleitschuh.gradle.ktlint.KtlintExtension
 
 plugins {
     `kotlin-dsl`
-    id("org.jlleitschuh.gradle.ktlint").version("11.3.2")
+  //  id("org.jlleitschuh.gradle.ktlint").version("11.3.2")
 }
 
 group = "br.com.dfn.sunsetexperience.buildconfig"
@@ -13,6 +13,7 @@ java {
     targetCompatibility = JavaVersion.VERSION_11
 }
 
+/*
 configure<KtlintExtension> {
     debug.set(true)
     verbose.set(true)
@@ -25,6 +26,7 @@ configure<KtlintExtension> {
         reporter(ReporterType.CHECKSTYLE)
     }
 }
+*/
 
 dependencies {
     compileOnly(libs.android.gradlePlugin)
