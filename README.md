@@ -26,3 +26,12 @@ Above is shown the multiples modules
 <p align="start">
   <img src="art_arch.png" width="1024" title="modules">
 </p>
+
+
+### Setup
+Pre push Git Hooks
+> Add file pre-push at directory <b>.git/hooks<b/> to configure ktlint and deteKt checks before push
+
+<p align="start">
+  <img src="pre-push-git-hooks.gif" width="1024" title="pre-push">
+</p>
