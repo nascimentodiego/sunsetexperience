@@ -12,7 +12,7 @@ This project are using the following google techniques recommendations:
 > - Coroutines and flows.</br>
 > - Dependency injection best practices.</br>
 
-Above is the Clean Architecture flow that shows how the data is requested until data is presented. 
+Below is the Clean Architecture flow that shows how the data is requested until data is presented. 
 Clean Architecture divided into 3 layers: (Presentation - Domain - Data) 
 
 <p align="start">
@@ -20,7 +20,7 @@ Clean Architecture divided into 3 layers: (Presentation - Domain - Data)
 </p>
 
 ### Modules
-Above is shown the multiples modules
+Below is shown the multiples modules
 > The concept of this project is based feature module, can you see at diagram below:
 
 <p align="start">
