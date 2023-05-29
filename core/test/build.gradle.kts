@@ -17,4 +17,6 @@ dependencies {
     api(libs.androidx.compose.ui.test)
 
     debugApi(libs.androidx.compose.ui.testManifest)
+
+    testImplementation(libs.junit4)
 }
