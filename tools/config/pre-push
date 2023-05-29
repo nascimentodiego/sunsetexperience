@@ -47,6 +47,12 @@ echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿�
 echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢿⠿⡿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 echo -e "${COLOR_OFF}"
 
+
+echo "[lint] Checando o Lint Report..."
+./gradlew app:lint --daemon
+
+statusLint=$?
+
 echo "[ktlint] Verificando formatação do código..."
 ./gradlew app:ktlintCheck --daemon
 
@@ -59,13 +65,20 @@ echo "[DeteKt] Analisando o código..."
 
 statusdeteKt=$?
 
+get_lint_success() {
+    echo -e "lint ----------------------------------------- ${TXT_GREEN}[SUCCESS]${COLOR_OFF}" 
+}
+
+get_lint_fail() {
+    echo -e "lint ----------------------------------------- ${BG_WHITE}${TXT_RED}[FALHOU]${COLOR_OFF}"
+}
+
 get_ktlint_success() {
     echo -e "ktlint --------------------------------------- ${TXT_GREEN}[SUCCESS]${COLOR_OFF}" 
 }
 
 get_ktlint_fail() {
     echo -e "ktlint --------------------------------------- ${BG_WHITE}${TXT_RED}[FALHOU]${COLOR_OFF}"
-    echo -e "${COLOR_OFF}" 
     echo -e "Talvez você deva rodar o comando: ktlintFormat ->$TXT_BLUE ./gradlew app:ktlintFormat${COLOR_OFF}" 
 }
 
@@ -78,9 +91,10 @@ get_detekt_fail() {
     echo -e "Não se preocupa, dá uma olhadinha no relatório(pasta build): -> $TXT_BLUE detekt.html ${COLOR_OFF}"
 }
 
-if [[ "$status" == 0 ]] && [[ "$statusdeteKt" == 0 ]]; then
+if [[ "$status" == 0 ]] && [[ "$statusdeteKt" == 0 ]] && [[ "$statusLint" == 0 ]]; then
     echo -e ""    
     echo -e "${TXT_GREEN}✅ ${COLOR_OFF} Nenhum problema foi encontrado."
+    echo "$(get_lint_success)"    
     echo "$(get_ktlint_success)"
     echo "$(get_detekt_success)"
     echo -e ""
@@ -93,18 +107,27 @@ else
     echo -e ""
 fi
 
+if [ "$statusLint" == 1 ] ; then
+    echo "$(get_lint_fail)"
+else
+   echo "$(get_lint_success)"
+fi
+
 if [ "$status" == 1 ] ; then
     echo "$(get_ktlint_fail)"
-
-    exit 1
 else
    echo "$(get_ktlint_success)"
 fi
 
 if [ "$statusdeteKt" == 1 ] ; then
     echo "$(get_detekt_fail)"  
-
-    exit 1
+else
+   echo "$(get_detekt_success)"
 fi
 
-exit 0
+if [[ "$status" == 0 ]] && [[ "$statusdeteKt" == 0 ]] && [[ "$statusLint" == 0 ]]; then
+  exit 0
+else
+  exit 1
+fi
+
