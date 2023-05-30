@@ -8,8 +8,6 @@ plugins {
 }
 
 android {
-    namespace = "br.com.dfn.app.sunsetexp"
-
     defaultConfig {
         applicationId = "br.com.dfn.app.sunsetexp"
         versionCode = 1
@@ -24,7 +22,9 @@ android {
     buildTypes {
         val debug by getting {
             applicationIdSuffix = SunsetBuildType.DEBUG.applicationIdSuffix
+            versionNameSuffix = SunsetBuildType.DEBUG.applicationIdSuffix
         }
+
         val release by getting {
             isMinifyEnabled = true
             applicationIdSuffix = SunsetBuildType.RELEASE.applicationIdSuffix
@@ -45,6 +45,8 @@ android {
             excludes.add("/META-INF/{AL2.0,LGPL2.1}")
         }
     }
+
+    namespace = "br.com.dfn.app.sunsetexp"
 }
 
 dependencies {
