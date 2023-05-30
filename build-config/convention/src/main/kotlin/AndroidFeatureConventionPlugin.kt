@@ -9,10 +9,22 @@ class AndroidFeatureConventionPlugin: Plugin<Project> {
         with(target) {
             pluginManager.apply {
                 apply("sunsetexperience.android.library")
+                apply("sunsetexperience.android.library.jacoco")
             }
 
             extensions.configure<LibraryExtension> {
                 configureFlavors(this)
+
+                defaultConfig {
+                    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+                }
+
+                buildTypes {
+                    getByName("debug"){
+                        enableAndroidTestCoverage = true
+                        enableUnitTestCoverage = true
+                    }
+                }
             }
         }
     }

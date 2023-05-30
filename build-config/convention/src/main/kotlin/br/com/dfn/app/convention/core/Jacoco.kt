@@ -34,9 +34,13 @@ internal fun Project.configureJacoco(
     val jacocoTestReport = tasks.create("jacocoIntegratedTestReport")
 
     androidComponentsExtension.onVariants { variant ->
+
         val variantName = variant.name.capitalized()
         val flavorName = variant.flavorName?.capitalized()?:"demo"
         val buildTypeName = variant.buildType?:"debug"
+
+        if(buildTypeName != "debug" || flavorName == "Demo" )
+            return@onVariants
 
         val testTaskName = "test${variantName}UnitTest"
         val instrumentedTestTaskName = "create${variantName}CoverageReport"

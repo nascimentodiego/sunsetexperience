@@ -1,6 +1,5 @@
 import br.com.dfn.app.convention.core.configureKotlinAndroid
 import com.android.build.gradle.LibraryExtension
-import com.android.builder.model.AndroidLibrary
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalogsExtension
@@ -16,7 +15,6 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             with(pluginManager) {
                 apply("com.android.library")
                 apply("org.jetbrains.kotlin.android")
-                apply("sunsetexperience.android.library.jacoco")
                 apply("sunsetexperience.android.application.ktlint")
                 apply("sunsetexperience.android.application.detekt")
             }
@@ -24,17 +22,6 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             extensions.configure<LibraryExtension> {
                 configureKotlinAndroid(this)
                 defaultConfig.targetSdk = 33
-
-                buildTypes {
-                    getByName("debug"){
-                        enableAndroidTestCoverage = true
-                        enableUnitTestCoverage = true
-                    }
-                    getByName("release") {
-                        enableAndroidTestCoverage = true
-                        enableUnitTestCoverage = true
-                    }
-                }
             }
 
             val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
