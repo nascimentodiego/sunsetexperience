@@ -1,6 +1,6 @@
-import br.com.dfn.app.convention.core.configureFlavors
 import br.com.dfn.app.convention.core.configureKotlinAndroid
 import com.android.build.gradle.LibraryExtension
+import com.android.builder.model.AndroidLibrary
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalogsExtension
@@ -12,6 +12,7 @@ import org.gradle.kotlin.dsl.kotlin
 class AndroidLibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
+
             with(pluginManager) {
                 apply("com.android.library")
                 apply("org.jetbrains.kotlin.android")
@@ -23,8 +24,18 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             extensions.configure<LibraryExtension> {
                 configureKotlinAndroid(this)
                 defaultConfig.targetSdk = 33
-            }
 
+                buildTypes {
+                    getByName("debug"){
+                        enableAndroidTestCoverage = true
+                        enableUnitTestCoverage = true
+                    }
+                    getByName("release") {
+                        enableAndroidTestCoverage = true
+                        enableUnitTestCoverage = true
+                    }
+                }
+            }
 
             val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
             configurations.configureEach {
@@ -34,9 +45,17 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                     force("org.objenesis:objenesis:2.6")
                 }
             }
+
             dependencies {
-                add("androidTestImplementation", kotlin("test"))
+                add("implementation", libs.findLibrary("androidx.lifecycle.runtimeCompose").get())
+                add("implementation", libs.findLibrary("androidx.lifecycle.viewModelCompose").get())
+                add("implementation", libs.findLibrary("kotlinx.coroutines.android").get())
+
                 add("testImplementation", kotlin("test"))
+                add("testImplementation", project(":core:test"))
+                add("androidTestImplementation", kotlin("test"))
+                add("androidTestImplementation", project(":core:test"))
+
             }
         }
     }
