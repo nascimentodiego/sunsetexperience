@@ -1,7 +1,6 @@
 package br.com.dfn.app.sunsetexp
 
 import org.junit.Test
-
 import org.junit.Assert.assertEquals
 
 /**
