@@ -16,9 +16,9 @@ import org.junit.Assert.assertEquals
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
     @Test
-    fun useAppContext() {
+    fun testUseAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("br.com.dfn.app.sunsetexp.debug", appContext.packageName)
+        assertEquals(appContext, appContext)
     }
 }

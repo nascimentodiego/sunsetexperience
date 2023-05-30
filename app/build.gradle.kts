@@ -23,6 +23,9 @@ android {
         val debug by getting {
             applicationIdSuffix = SunsetBuildType.DEBUG.applicationIdSuffix
             versionNameSuffix = SunsetBuildType.DEBUG.applicationIdSuffix
+
+            enableAndroidTestCoverage = true
+            enableUnitTestCoverage = true
         }
 
         val release by getting {
@@ -32,6 +35,9 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
+            enableAndroidTestCoverage = true
+            enableUnitTestCoverage = true
 
             // To publish on the Play store a private signing key is required, but to allow anyone
             // who clones the code to sign and run the release variant, use the debug signing key.
