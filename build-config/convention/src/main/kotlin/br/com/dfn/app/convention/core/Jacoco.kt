@@ -51,7 +51,7 @@ internal fun Project.configureJacoco(
             group = "coverage-report"
             description = "Generate Jacoco Report to $variantName"
 
-            dependsOn(testTaskName)
+            dependsOn(testTaskName,instrumentedTestTaskName)
 
             reports {
                 xml.required.set(true)
