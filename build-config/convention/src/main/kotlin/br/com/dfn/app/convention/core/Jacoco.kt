@@ -58,7 +58,7 @@ internal fun Project.configureJacoco(
                 xml.required.set(true)
                 html.required.set(true)
                 xml.outputLocation.set(
-                    file("$buildDir/reports/coverage/jacoco/${variant.flavorName}/$buildTypeName")
+                    file("$buildDir/reports/coverage/jacoco/${variant.flavorName}/$buildTypeName.xml")
                 )
             /*
                 html.outputLocation
