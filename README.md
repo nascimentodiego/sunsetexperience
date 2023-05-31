@@ -1,7 +1,7 @@
 # sunsetexperience
 An intuitive app to manage your temporary housing
 
-[![Build Status](https://app.bitrise.io/app/ddde351c-414e-466a-a833-410ae2d9f034/status.svg?token=YomYQxlUEfrBqUGUMA60zw&branch=develop)](https://app.bitrise.io/app/ddde351c-414e-466a-a833-410ae2d9f034)
+[![Build Status](https://app.bitrise.io/app/ddde351c-414e-466a-a833-410ae2d9f034/status.svg?token=YomYQxlUEfrBqUGUMA60zw&branch=develop)](https://app.bitrise.io/app/ddde351c-414e-466a-a833-410ae2d9f034) [![codecov](https://codecov.io/github/nascimentodiego/sunsetexperience/branch/develop/graph/badge.svg?token=TRM8RI931Y)](https://codecov.io/github/nascimentodiego/sunsetexperience)
 
 ## Architecture
 
