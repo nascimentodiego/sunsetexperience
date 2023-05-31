@@ -52,6 +52,8 @@ internal fun Project.configureJacoco(
             description = "Generate Jacoco Report to $variantName"
 
             dependsOn(testTaskName)
+            //To enable Instrumentation report
+//            dependsOn(testTaskName, instrumentedTestTaskName)
 
             reports {
                 csv.required.set(false)
