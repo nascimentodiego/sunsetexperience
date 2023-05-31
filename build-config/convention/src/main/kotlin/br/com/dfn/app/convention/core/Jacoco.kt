@@ -55,6 +55,11 @@ internal fun Project.configureJacoco(
 
             reports {
                 xml.required.set(true)
+                xml.outputLocation.set(
+                    file(
+                        "$projectDir/reports/coverage/unitTest/${variant.flavorName}/$buildTypeName"
+                    )
+                )
                 csv.required.set(false)
                 html.required.set(true)
               /*  html.outputLocation
