@@ -57,13 +57,18 @@ internal fun Project.configureJacoco(
                 csv.required.set(false)
                 xml.required.set(true)
                 html.required.set(true)
-
+                xml.outputLocation.set(
+                    file("$buildDir/reports/coverage/jacoco/${variant.flavorName}/$buildTypeName")
+                )
+            /*
                 html.outputLocation
                     .set(
                         file(
                             "$buildDir/reports/coverage/unitTest/${variant.flavorName}/$buildTypeName"
                         )
                     )
+            */
+
             }
 
             classDirectories.setFrom(
