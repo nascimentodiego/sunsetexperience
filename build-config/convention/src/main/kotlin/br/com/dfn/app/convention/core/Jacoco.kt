@@ -36,10 +36,10 @@ internal fun Project.configureJacoco(
     androidComponentsExtension.onVariants { variant ->
 
         val variantName = variant.name.capitalized()
-        val flavorName = variant.flavorName?.capitalized()?:"demo"
-        val buildTypeName = variant.buildType?:"debug"
+        val flavorName = variant.flavorName?.capitalized() ?: "demo"
+        val buildTypeName = variant.buildType ?: "debug"
 
-        if(buildTypeName != "debug" || flavorName == "Demo" )
+        if (buildTypeName != "debug" || flavorName == "Demo")
             return@onVariants
 
         val testTaskName = "test${variantName}UnitTest"
@@ -54,20 +54,16 @@ internal fun Project.configureJacoco(
             dependsOn(testTaskName)
 
             reports {
-                xml.required.set(true)
-                xml.outputLocation.set(
-                    file(
-                        "$projectDir/reports/coverage/unitTest/${variant.flavorName}/$buildTypeName"
-                    )
-                )
                 csv.required.set(false)
+                xml.required.set(true)
                 html.required.set(true)
-              /*  html.outputLocation
+
+                html.outputLocation
                     .set(
                         file(
                             "$buildDir/reports/coverage/unitTest/${variant.flavorName}/$buildTypeName"
                         )
-                    )*/
+                    )
             }
 
             classDirectories.setFrom(
