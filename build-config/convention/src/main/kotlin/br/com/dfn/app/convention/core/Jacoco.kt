@@ -55,13 +55,14 @@ internal fun Project.configureJacoco(
 
             reports {
                 xml.required.set(true)
+                csv.required.set(false)
                 html.required.set(true)
-                html.outputLocation
+              /*  html.outputLocation
                     .set(
                         file(
                             "$buildDir/reports/coverage/unitTest/${variant.flavorName}/$buildTypeName"
                         )
-                    )
+                    )*/
             }
 
             classDirectories.setFrom(
@@ -73,17 +74,24 @@ internal fun Project.configureJacoco(
                 }
             )
 
-            sourceDirectories.setFrom(
-                files(
-                    "$projectDir/src/main/java",
-                    "$projectDir/src/main/kotlin"
-                ),
-            )
             executionData.setFrom(
                 files(
                     "$buildDir/jacoco/$testTaskName.exec",
                     "$buildDir/outputs/unit_test_code_coverage/${variantName}UnitTest/$testTaskName.exec",
                     "$buildDir/outputs/code_coverage/connected/*coverage.ec"
+                )
+            )
+
+            sourceDirectories.setFrom(
+                files(
+                    "$projectDir/src/main/java",
+                    "$projectDir/src/main/kotlin"
+                )
+            )
+            additionalSourceDirs.setFrom(
+                files(
+                    "$projectDir/src/main/java",
+                    "$projectDir/src/main/kotlin"
                 )
             )
         }
